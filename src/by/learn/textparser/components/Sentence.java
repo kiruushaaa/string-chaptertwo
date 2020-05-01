@@ -12,6 +12,14 @@ public class Sentence implements IParse {
         this.sentence = sentence;
     }
 
+    public Sentence(List<Word> words) {
+        StringBuilder sb = new StringBuilder();
+        for (Word word : words) {
+            sb.append(word).append(WORD_REGEX);
+        }
+        this.sentence = sb.toString().trim();
+    }
+
     public String getSentence() {
         return sentence;
     }

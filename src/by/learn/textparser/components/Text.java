@@ -12,6 +12,14 @@ public class Text implements IParse {
         this.text = text;
     }
 
+    public Text(List<Sentence> sentences) {
+        StringBuilder sb = new StringBuilder();
+        for (Sentence sentence : sentences) {
+            sb.append(sentence).append(". ");
+        }
+        this.text = sb.toString().trim();
+    }
+
     public String getText() {
         return text;
     }
