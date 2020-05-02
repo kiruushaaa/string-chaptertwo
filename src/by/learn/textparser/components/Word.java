@@ -27,7 +27,7 @@ public class Word {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Word word1 = (Word) o;
-        return getWord().equals(word1.getWord());
+        return getWord().equalsIgnoreCase(word1.getWord());
     }
 
     @Override
