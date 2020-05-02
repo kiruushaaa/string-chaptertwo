@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Sentence implements IParse {
-    private final String WORD_REGEX = "\\s";
+    private final String WORD_REGEX = "\\s+";
     private String sentence;
 
     public Sentence(String sentence) {
@@ -15,7 +15,7 @@ public class Sentence implements IParse {
     public Sentence(List<Word> words) {
         StringBuilder sb = new StringBuilder();
         for (Word word : words) {
-            sb.append(word).append(WORD_REGEX);
+            sb.append(word).append(". ");
         }
         this.sentence = sb.toString().trim();
     }
