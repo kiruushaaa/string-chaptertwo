@@ -12,10 +12,11 @@ public class Parser {
         List<Word> uniqueWords = new ArrayList<>();
         List<Sentence> sentences = text.parse();
         for(Word currentWord : sentences.get(index).parse()) {
-            boolean flag = false;
+            boolean flag = true;
             for (int i = 0; i < sentences.size(); i++) {
                 if (i == index) continue;
                 flag = sentences.get(i).parse().contains(currentWord);
+                if (flag) break;
             }
             if (!flag) uniqueWords.add(currentWord);
         }
@@ -24,8 +25,7 @@ public class Parser {
     public static List<Sentence> getSentences(Text text) {
         List<Sentence> sentences = text.parse();
         for (int i = 0; i < sentences.size(); i++) {
-            boolean flag = Parser.findUniqueWord(text,i).size() == sentences.get(i).parse().size() ||
-                            Parser.findUniqueWord(text,i).size() == sentences.get(i).parse().size() - 1;
+            boolean flag = Parser.findUniqueWord(text,i).size() == sentences.get(i).parse().size();
             if (flag) sentences.remove(i);
         }
         return sentences;
