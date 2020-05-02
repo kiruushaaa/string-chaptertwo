@@ -24,7 +24,9 @@ public class Parser {
     public static List<Sentence> getSentences(Text text) {
         List<Sentence> sentences = text.parse();
         for (int i = 0; i < sentences.size(); i++) {
-            if (Parser.findUniqueWord(text,i).size() == sentences.get(i).parse().size()) sentences.remove(i);
+            boolean flag = Parser.findUniqueWord(text,i).size() == sentences.get(i).parse().size() ||
+                            Parser.findUniqueWord(text,i).size() == sentences.get(i).parse().size() - 1;
+            if (flag) sentences.remove(i);
         }
         return sentences;
     }
