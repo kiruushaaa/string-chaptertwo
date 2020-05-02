@@ -15,7 +15,7 @@ public class Sentence implements IParse {
     public Sentence(List<Word> words) {
         StringBuilder sb = new StringBuilder();
         for (Word word : words) {
-            sb.append(word).append(". ");
+            sb.append(word).append(' ');
         }
         this.sentence = sb.toString().trim();
     }
