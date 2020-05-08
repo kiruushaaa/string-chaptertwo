@@ -6,7 +6,7 @@ import by.learn.textparser.utils.Reader;
 
 public class SecondRunner {
     public static void main(String[] args) {
-        String path = "/Users/kirusha/Documents/Java/string-templates/text1.txt";
+        String path = "string-templates/text1.txt";
         Text text = new Text(Reader.fromFile(path));
         System.out.println(text);
         text = new Text(Parser.getSentences(text));
