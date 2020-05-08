@@ -6,6 +6,8 @@ import by.learn.textparser.components.Word;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Parser {
     public static List<Word> findUniqueWord(Text text, int index) {
@@ -22,6 +24,7 @@ public class Parser {
         }
         return uniqueWords;
     }
+
     public static List<Sentence> getSentences(Text text) {
         List<Sentence> sentences = text.parse();
         for (int i = 0; i < sentences.size(); i++) {
@@ -29,5 +32,19 @@ public class Parser {
             if (flag) sentences.remove(i);
         }
         return sentences;
+    }
+
+    public static List<Word> getVowel(Text text) {
+        List<Word> vowelWords = new ArrayList<>();
+
+        for (Sentence currentSentence : text.parse()) {
+            for (Word currentWord : currentSentence.parse()) {
+                Matcher matcher = Pattern.compile("^[AEIOUYaeiouy]+(.*)").matcher(currentWord.getWord());
+                if (matcher.find()) {
+                    vowelWords.add(currentWord);
+                }
+            }
+        }
+        return vowelWords;
     }
 }
